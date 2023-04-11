@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
@@ -14,6 +14,8 @@ function Dashboard() {
         (state) => state.niceThing
     );
 
+    const [shouldFetchUsers, setShouldFetchUsers] = useState(true);
+
     useEffect(() => {
         if (isError) {
             console.log(message);
@@ -23,12 +25,15 @@ function Dashboard() {
             navigate("/");
         }
 
-        dispatch(getUsers());
+        if (shouldFetchUsers) {
+            dispatch(getUsers());
+            setShouldFetchUsers(false);
+        }
 
         return () => {
             dispatch(reset());
         };
-    }, [user, navigate, isError, message, dispatch]);
+    }, [user, navigate, isError, message, dispatch, shouldFetchUsers]);
 
     if (isLoading) {
         return <Spinner />;

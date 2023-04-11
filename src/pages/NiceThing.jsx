@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 function NiceThing() {
     const [receivingID, setReceivingID] = useState(0);
     const [text, setText] = useState("");
+    const [shouldFetchUsers, setShouldFetchUsers] = useState(true);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -31,12 +32,15 @@ function NiceThing() {
             navigate("/");
         }
 
-        dispatch(getUsers());
+        if (shouldFetchUsers) {
+            dispatch(getUsers());
+            setShouldFetchUsers(false);
+        }
 
         return () => {
             dispatch(reset());
         };
-    }, [user, navigate, isError, message, dispatch]);
+    }, [user, navigate, isError, message, dispatch, shouldFetchUsers]);
 
     if (isLoading) {
         return <Spinner />;

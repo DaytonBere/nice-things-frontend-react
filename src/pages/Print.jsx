@@ -14,6 +14,7 @@ import {
 
 function Print() {
     const [receivingID, setReceivingID] = useState(0);
+    const [shouldFetchUsers, setShouldFetchUsers] = useState(true);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -37,10 +38,13 @@ function Print() {
             toast.error(message);
         }
 
-        dispatch(getUsers());
+        if (shouldFetchUsers) {
+            dispatch(getUsers());
+            setShouldFetchUsers(false);
+        }
 
         dispatch(reset());
-    }, [isError, message, navigate, dispatch]);
+    }, [shouldFetchUsers, isError, message, navigate, dispatch]);
 
     useEffect(() => {
         if (isError) {

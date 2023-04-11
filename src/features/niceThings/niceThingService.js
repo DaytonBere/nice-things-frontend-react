@@ -5,6 +5,10 @@ const API_URL = "https://nice-things-backend-test.onrender.com/api/niceThings/";
 const getUsers = async () => {
     const response = await axios.get(API_URL + "getUsers", {
         withCredentials: true,
+        crossDomain: true,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
 
     return response.data;
@@ -16,6 +20,10 @@ const createNiceThing = async (niceThingData) => {
         niceThingData,
         {
             withCredentials: true,
+            crossDomain: true,
+            headers: {
+                "Content-Type": "application/json",
+            },
         }
     );
 
@@ -28,6 +36,10 @@ const getUserNiceThings = async (userData) => {
             Receiver: userData.Receiver,
         },
         withCredentials: true,
+        crossDomain: true,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
 
     return response.data;

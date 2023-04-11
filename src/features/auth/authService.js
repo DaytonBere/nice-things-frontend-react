@@ -10,6 +10,10 @@ const logout = () => {
 const login = async (userData) => {
     const response = await axios.post(API_URL + "signIn", userData, {
         withCredentials: true,
+        crossDomain: true,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
 
     if (response.data) {
@@ -23,6 +27,10 @@ const login = async (userData) => {
 const register = async (userData) => {
     const response = await axios.post(API_URL + "signUp", userData, {
         withCredentials: true,
+        crossDomain: true,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
 
     return response.data;
@@ -31,6 +39,10 @@ const register = async (userData) => {
 const changePassword = async (userData) => {
     const response = await axios.patch(API_URL + "changePassword", userData, {
         withCredentials: true,
+        crossDomain: true,
+        headers: {
+            "Content-Type": "application/json",
+        },
     });
 
     return response.data;
