@@ -1,5 +1,3 @@
-import { FaAlignLeft } from "react-icons/fa";
-
 function NiceThingReader({ niceThing }) {
     return (
         <>
