@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-const API_URL = "http://localhost:4000/api/user/";
+const API_URL = "https://nice-things-backend-test.onrender.com/api/user/";
 
 const logout = () => {
     localStorage.removeItem("user");

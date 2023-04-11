@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:4000/api/niceThings/";
+const API_URL = "https://nice-things-backend-test.onrender.com/api/niceThings/";
 
 const getUsers = async () => {
     const response = await axios.get(API_URL + "getUsers", {
