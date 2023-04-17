@@ -12,9 +12,9 @@ const initialState = {
 
 export const getUsers = createAsyncThunk(
     "niceThings/getAll",
-    async (_, thunkAPI) => {
+    async (userData, thunkAPI) => {
         try {
-            return await niceThingService.getUsers();
+            return await niceThingService.getUsers(userData);
         } catch (error) {
             const message =
                 (error.response &&

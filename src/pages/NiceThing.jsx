@@ -25,15 +25,19 @@ function NiceThing() {
 
     useEffect(() => {
         if (isError) {
-            console.log(message);
+            toast.error(message);
         }
 
         if (!user) {
             navigate("/");
         }
 
+        const userData = {
+            Sender: user.ID,
+        };
+
         if (shouldFetchUsers) {
-            dispatch(getUsers());
+            dispatch(getUsers(userData));
             setShouldFetchUsers(false);
         }
 

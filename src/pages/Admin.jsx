@@ -57,6 +57,7 @@ function Admin() {
             LastName,
             Email,
             Admin: false,
+            Sender: user.ID,
         };
 
         dispatch(register(userData));

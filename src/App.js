@@ -3,6 +3,7 @@ import Admin from "./pages/Admin";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import NiceThing from "./pages/NiceThing";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,6 +27,7 @@ function App() {
                             element={<ChangePassword />}
                         />
                     </Routes>
+                    <Footer />
                 </div>
             </Router>
             <ToastContainer />

@@ -20,7 +20,7 @@ function ChangePassword() {
 
     useEffect(() => {
         if (!user) {
-            dispatch("/");
+            navigate("/");
         }
 
         if (isError) {
@@ -54,6 +54,7 @@ function ChangePassword() {
         const userData = {
             OldPassword: oldPassword,
             NewPassword: newPassword1,
+            Sender: user.ID,
         };
 
         dispatch(changePassword(userData));

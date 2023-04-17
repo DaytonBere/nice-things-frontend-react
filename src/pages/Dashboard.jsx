@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
+import { toast } from "react-toastify";
 import { getUsers, reset } from "../features/niceThings/niceThingSlice";
 
 function Dashboard() {
@@ -18,15 +19,19 @@ function Dashboard() {
 
     useEffect(() => {
         if (isError) {
-            console.log(message);
+            toast.error(message);
         }
 
         if (!user) {
             navigate("/");
         }
 
+        const userData = {
+            Sender: user.ID,
+        };
+
         if (shouldFetchUsers) {
-            dispatch(getUsers());
+            dispatch(getUsers(userData));
             setShouldFetchUsers(false);
         }
 

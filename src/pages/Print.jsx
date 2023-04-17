@@ -38,21 +38,29 @@ function Print() {
             toast.error(message);
         }
 
+        const userData = {
+            Sender: user.ID,
+        };
+
         if (shouldFetchUsers) {
-            dispatch(getUsers());
+            dispatch(getUsers(userData));
             setShouldFetchUsers(false);
         }
 
         dispatch(reset());
-    }, [shouldFetchUsers, isError, message, navigate, dispatch]);
+    }, [shouldFetchUsers, isError, message, navigate, dispatch, user.ID]);
 
     useEffect(() => {
         if (isError) {
             toast.error(message);
         }
 
-        dispatch(getUsers());
-    }, [niceThings, isError, message, navigate, dispatch]);
+        const userData = {
+            Sender: user.ID,
+        };
+
+        dispatch(getUsers(userData));
+    }, [niceThings, isError, message, navigate, dispatch, user.ID]);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -64,6 +72,7 @@ function Print() {
 
         const userData = {
             Receiver: parseInt(receivingID),
+            Sender: user.ID,
         };
 
         dispatch(getUserNiceThings(userData));
