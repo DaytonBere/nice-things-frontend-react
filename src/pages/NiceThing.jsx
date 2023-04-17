@@ -79,7 +79,6 @@ function NiceThing() {
                 <h1>
                     <FaFolderPlus /> Create Nice Thing
                 </h1>
-                <p>Account creator</p>
             </section>
 
             <section className="form">
